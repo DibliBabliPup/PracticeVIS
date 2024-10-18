@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Neco-arc</title>
+    <script>
+        function playSound() {
+            fetch('/play_sound')
+                .then(response => response.blob())
+                .then(blob => {
+                    const audioUrl = URL.createObjectURL(blob);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                });
+        }
+    </script>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='gif/funny_cat.gif') }}" alt="Funny Cat">
+    <button onclick="playSound()">Дать конфету смешной кошке</button>
+    <button onclick="alert('Отмена')">Отмена</button>
+</body>
+</html>
